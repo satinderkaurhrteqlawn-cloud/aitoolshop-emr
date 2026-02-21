@@ -394,8 +394,26 @@ function ProductCard({ product, onClick }) {
   );
 }
 
+// Skeleton Card for loading
+function ProductCardSkeleton() {
+  return (
+    <Card className="border-purple-100 overflow-hidden animate-pulse">
+      <CardHeader className="p-4 pb-0">
+        <div className="w-full h-32 bg-gray-200 rounded-xl mb-3" />
+      </CardHeader>
+      <CardContent className="p-4 pt-0">
+        <div className="h-5 bg-gray-200 rounded w-3/4 mb-2" />
+        <div className="h-4 bg-gray-200 rounded w-1/4" />
+      </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <div className="h-6 bg-gray-200 rounded w-1/3" />
+      </CardFooter>
+    </Card>
+  );
+}
+
 // Product Grid
-function ProductGrid({ products, setSelectedProduct, setCurrentPage }) {
+function ProductGrid({ products, setSelectedProduct, setCurrentPage, loading }) {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="flex items-center justify-between mb-8">
@@ -414,16 +432,30 @@ function ProductGrid({ products, setSelectedProduct, setCurrentPage }) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {products.slice(0, 4).map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onClick={() => {
-              setSelectedProduct(product);
-              setCurrentPage('product');
-            }}
-          />
-        ))}
+        {loading ? (
+          <>
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+          </>
+        ) : products.length === 0 ? (
+          <div className="col-span-full text-center py-12">
+            <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <p className="text-gray-500">No products available</p>
+          </div>
+        ) : (
+          products.slice(0, 4).map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onClick={() => {
+                setSelectedProduct(product);
+                setCurrentPage('product');
+              }}
+            />
+          ))
+        )}
       </div>
     </section>
   );
