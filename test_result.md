@@ -101,3 +101,110 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Digital Products & OTT Subscription Store - A clean, minimal shopping website for selling digital product subscriptions (OTT services like Netflix, Spotify + software tools like Canva, ChatGPT, etc.)"
+
+backend:
+  - task: "User Registration API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented POST /api/auth/register with name, email, password. Admin role assigned for parwal111@gmail.com"
+
+  - task: "User Login API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented POST /api/auth/login with JWT token generation"
+
+  - task: "Forgot Password API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented POST /api/auth/forgot-password (sends OTP) and POST /api/auth/reset-password"
+
+  - task: "Products CRUD API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "GET /api/products with filters, GET /api/products/:id, POST /api/admin/products, PUT /api/admin/products/:id, DELETE /api/admin/products/:id"
+
+  - task: "Orders API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "POST /api/orders (create order), GET /api/orders (user orders), GET /api/admin/orders, PUT /api/admin/orders/:id (status update)"
+
+  - task: "Admin Stats API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "GET /api/admin/stats returns totalProducts, totalUsers, totalOrders, totalRevenue"
+
+  - task: "Admin Users API"
+    implemented: true
+    working: "NA"
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "GET /api/admin/users returns all users (admin only)"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "User Registration API"
+    - "User Login API"
+    - "Products CRUD API"
+    - "Orders API"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Implemented full backend API for Digital Products Store. Please test all APIs including auth (register/login/forgot-password), products (CRUD with filters), orders (create/list/update status), and admin endpoints. Admin email is parwal111@gmail.com. JWT auth required for protected routes."
