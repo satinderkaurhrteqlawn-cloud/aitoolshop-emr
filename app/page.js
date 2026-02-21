@@ -1642,38 +1642,25 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({ category: 'all', status: 'all' });
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [productsLoading, setProductsLoading] = useState(true);
 
   useEffect(() => {
-    seedAndLoadProducts();
+    loadProducts();
   }, []);
 
-  const seedAndLoadProducts = async () => {
+  const loadProducts = async () => {
     try {
-      // Seed demo products
-      await fetch('/api/seed', { method: 'POST' }).catch(() => {});
+      // Seed in background (don't wait)
+      fetch('/api/seed', { method: 'POST' }).catch(() => {});
       // Load products
       const data = await api('products');
       setProducts(data);
     } catch (err) {
       console.error('Failed to load products:', err);
     } finally {
-      setInitialLoading(false);
+      setProductsLoading(false);
     }
   };
-
-  if (auth.loading || initialLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-purple-50/30 to-white">
-        <div className="text-center">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center mx-auto mb-4 animate-pulse">
-            <Sparkles className="w-6 h-6 text-white" />
-          </div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col">
