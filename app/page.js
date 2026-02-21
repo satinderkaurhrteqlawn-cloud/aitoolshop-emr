@@ -1707,6 +1707,7 @@ export default function App() {
               products={products}
               setSelectedProduct={setSelectedProduct}
               setCurrentPage={setCurrentPage}
+              loading={productsLoading}
             />
           </>
         )}
@@ -1720,6 +1721,7 @@ export default function App() {
             setSearchTerm={setSearchTerm}
             filters={filters}
             setFilters={setFilters}
+            loading={productsLoading}
           />
         )}
 
