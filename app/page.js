@@ -462,7 +462,7 @@ function ProductGrid({ products, setSelectedProduct, setCurrentPage, loading }) 
 }
 
 // Products Page with Filters
-function ProductsPage({ products, setSelectedProduct, setCurrentPage, searchTerm, setSearchTerm, filters, setFilters }) {
+function ProductsPage({ products, setSelectedProduct, setCurrentPage, searchTerm, setSearchTerm, filters, setFilters, loading }) {
   const filteredProducts = products.filter(p => {
     if (searchTerm && !p.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
     if (filters.category !== 'all' && p.category !== filters.category) return false;
@@ -512,7 +512,16 @@ function ProductsPage({ products, setSelectedProduct, setCurrentPage, searchTerm
       </div>
 
       {/* Products Grid */}
-      {filteredProducts.length === 0 ? (
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+        </div>
+      ) : filteredProducts.length === 0 ? (
         <div className="text-center py-16">
           <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-600">No products found</h3>
