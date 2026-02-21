@@ -1,0 +1,687 @@
+{
+  "success": true,
+  "timestamp": "2025-01-27",
+  "results": {
+    "auth": {
+      "health": {
+        "status": 200,
+        "data": {
+          "status": "ok",
+          "timestamp": "2026-02-21T13:46:13.860Z"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/health",
+        "method": "GET"
+      },
+      "register_valid": {
+        "status": 200,
+        "data": {
+          "user": {
+            "id": "63d69581-6a53-456f-ae4f-98e1f3331704",
+            "name": "John Doe",
+            "email": "test_e4a4162d@example.com",
+            "role": "customer",
+            "createdAt": "2026-02-21T13:46:14.074Z",
+            "lastLogin": "2026-02-21T13:46:14.074Z",
+            "_id": "6999b72624e34cebd2903b5a"
+          },
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZDY5NTgxLTZhNTMtNDU2Zi1hZTRmLTk4ZTFmMzMzMTcwNCIsImVtYWlsIjoidGVzdF9lNGE0MTYyZEBleGFtcGxlLmNvbSIsIm5hbWUiOiJKb2huIERvZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc3MTY4MTU3NCwiZXhwIjoxNzcyMjg2Mzc0fQ.rMiODNe9LR7kh_0_j1iKnziagUmkY8_cdAHpnLPt1ZQ"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/register",
+        "method": "POST"
+      },
+      "register_duplicate": {
+        "status": 400,
+        "data": {
+          "error": "Email already registered"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/register",
+        "method": "POST"
+      },
+      "register_missing_fields": {
+        "status": 400,
+        "data": {
+          "error": "Name, email and password required"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/register",
+        "method": "POST"
+      },
+      "register_admin": {
+        "status": 400,
+        "data": {
+          "error": "Email already registered"
+        },
+        "success": false,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/register",
+        "method": "POST"
+      },
+      "login_admin": {
+        "status": 200,
+        "data": {
+          "user": {
+            "_id": "6999b64a24e34cebd2903b59",
+            "id": "9d1a8aac-2e3a-4089-af3c-ffa473b3801b",
+            "name": "Admin User",
+            "email": "parwal111@gmail.com",
+            "role": "admin",
+            "createdAt": "2026-02-21T13:42:34.285Z",
+            "lastLogin": "2026-02-21T13:42:34.285Z",
+            "resetOtp": "563500",
+            "resetOtpExpiry": "2026-02-21T13:55:41.771Z"
+          },
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlkMWE4YWFjLTJlM2EtNDA4OS1hZjNjLWZmYTQ3M2IzODAxYiIsImVtYWlsIjoicGFyd2FsMTExQGdtYWlsLmNvbSIsIm5hbWUiOiJBZG1pbiBVc2VyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzcxNjgxNTc0LCJleHAiOjE3NzIyODYzNzR9.FQvZRQ0IC1m1a2qDRKSOAKxrs3h1SCHZdQXlUNTrnzg"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/login",
+        "method": "POST"
+      },
+      "login_invalid": {
+        "status": 401,
+        "data": {
+          "error": "Invalid credentials"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/login",
+        "method": "POST"
+      },
+      "login_missing_fields": {
+        "status": 400,
+        "data": {
+          "error": "Email and password required"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/login",
+        "method": "POST"
+      },
+      "forgot_password_valid": {
+        "status": 200,
+        "data": {
+          "message": "OTP sent to your email",
+          "demo_otp": "525975"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/forgot-password",
+        "method": "POST"
+      },
+      "forgot_password_invalid": {
+        "status": 404,
+        "data": {
+          "error": "Email not found"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/forgot-password",
+        "method": "POST"
+      },
+      "reset_password_valid": {
+        "status": 200,
+        "data": {
+          "message": "Password reset successful"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/reset-password",
+        "method": "POST"
+      },
+      "reset_password_invalid_otp": {
+        "status": 400,
+        "data": {
+          "error": "Invalid OTP"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/auth/reset-password",
+        "method": "POST"
+      }
+    },
+    "products": {
+      "get_all": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b64024e34cebd2903b57",
+            "id": "200f06bf-5f8e-4482-a3cb-d85f7537eaa1",
+            "name": "Amazon Prime",
+            "description": "Get free delivery, Prime Video, Prime Music, and exclusive deals with Amazon Prime.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Amazon_Prime_Logo.svg",
+            "features": [
+              "Free Delivery",
+              "Prime Video",
+              "Prime Music",
+              "Exclusive Deals"
+            ],
+            "pricing": {
+              "1": 0,
+              "3": 459,
+              "6": 899,
+              "9": 0,
+              "12": 1499
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.023Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b58",
+            "id": "839538af-f1eb-4ed6-83c6-7ab03a937038",
+            "name": "YouTube Premium",
+            "description": "Ad-free videos, background play, and YouTube Music Premium included.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png",
+            "features": [
+              "No Ads",
+              "Background Play",
+              "YouTube Music",
+              "Downloads"
+            ],
+            "pricing": {
+              "1": 129,
+              "3": 369,
+              "6": 699,
+              "9": 999,
+              "12": 1299
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "out_of_stock",
+            "createdAt": "2026-02-21T13:42:24.023Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b53",
+            "id": "65e97e62-72bb-41b3-948c-34c1de48e1a0",
+            "name": "Netflix Premium",
+            "description": "Watch unlimited movies, TV shows, and more on Netflix Premium. Stream on 4 devices simultaneously in Ultra HD.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+            "features": [
+              "4K Ultra HD",
+              "4 Screens",
+              "Download & Watch Offline",
+              "No Ads"
+            ],
+            "pricing": {
+              "1": 199,
+              "3": 549,
+              "6": 999,
+              "9": 1399,
+              "12": 1799
+            },
+            "salePrice": {
+              "1": 149,
+              "3": 449,
+              "6": 849,
+              "9": 1199,
+              "12": 1499
+            },
+            "saleEndDate": "2026-02-28T13:42:24.022Z",
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b54",
+            "id": "204ebcfb-2923-47a4-8971-25f008380059",
+            "name": "Spotify Premium",
+            "description": "Listen to millions of songs and podcasts without ads. Download music for offline listening.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+            "features": [
+              "Ad-free Music",
+              "Offline Downloads",
+              "High Quality Audio",
+              "Listen Anywhere"
+            ],
+            "pricing": {
+              "1": 119,
+              "3": 329,
+              "6": 599,
+              "9": 849,
+              "12": 1099
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b55",
+            "id": "65f69501-6e8d-4f11-954f-80349f3c6857",
+            "name": "ChatGPT Plus",
+            "description": "Access to GPT-4, faster response times, and priority access during peak hours.",
+            "category": "Software",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+            "features": [
+              "GPT-4 Access",
+              "Faster Responses",
+              "Priority Access",
+              "New Features First"
+            ],
+            "pricing": {
+              "1": 1499,
+              "3": 4299,
+              "6": 8299,
+              "9": 0,
+              "12": 15999
+            },
+            "salePrice": {
+              "1": 1299,
+              "3": 3799,
+              "6": 7499,
+              "9": 0,
+              "12": 13999
+            },
+            "saleEndDate": "2026-02-24T13:42:24.022Z",
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b56",
+            "id": "1a1b0e95-9ec2-408f-b4eb-30acfdca71d3",
+            "name": "Canva Pro",
+            "description": "Create stunning designs with premium templates, brand kit, and advanced features.",
+            "category": "Software",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg",
+            "features": [
+              "Premium Templates",
+              "Brand Kit",
+              "Background Remover",
+              "Resize Magic"
+            ],
+            "pricing": {
+              "1": 499,
+              "3": 1399,
+              "6": 2599,
+              "9": 3699,
+              "12": 4599
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/products",
+        "method": "GET"
+      },
+      "get_filtered": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b64024e34cebd2903b57",
+            "id": "200f06bf-5f8e-4482-a3cb-d85f7537eaa1",
+            "name": "Amazon Prime",
+            "description": "Get free delivery, Prime Video, Prime Music, and exclusive deals with Amazon Prime.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Amazon_Prime_Logo.svg",
+            "features": [
+              "Free Delivery",
+              "Prime Video",
+              "Prime Music",
+              "Exclusive Deals"
+            ],
+            "pricing": {
+              "1": 0,
+              "3": 459,
+              "6": 899,
+              "9": 0,
+              "12": 1499
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.023Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b53",
+            "id": "65e97e62-72bb-41b3-948c-34c1de48e1a0",
+            "name": "Netflix Premium",
+            "description": "Watch unlimited movies, TV shows, and more on Netflix Premium. Stream on 4 devices simultaneously in Ultra HD.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+            "features": [
+              "4K Ultra HD",
+              "4 Screens",
+              "Download & Watch Offline",
+              "No Ads"
+            ],
+            "pricing": {
+              "1": 199,
+              "3": 549,
+              "6": 999,
+              "9": 1399,
+              "12": 1799
+            },
+            "salePrice": {
+              "1": 149,
+              "3": 449,
+              "6": 849,
+              "9": 1199,
+              "12": 1499
+            },
+            "saleEndDate": "2026-02-28T13:42:24.022Z",
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          },
+          {
+            "_id": "6999b64024e34cebd2903b54",
+            "id": "204ebcfb-2923-47a4-8971-25f008380059",
+            "name": "Spotify Premium",
+            "description": "Listen to millions of songs and podcasts without ads. Download music for offline listening.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+            "features": [
+              "Ad-free Music",
+              "Offline Downloads",
+              "High Quality Audio",
+              "Listen Anywhere"
+            ],
+            "pricing": {
+              "1": 119,
+              "3": 329,
+              "6": 599,
+              "9": 849,
+              "12": 1099
+            },
+            "salePrice": null,
+            "saleEndDate": null,
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/products?category=OTT&status=instock",
+        "method": "GET"
+      },
+      "get_search": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b64024e34cebd2903b53",
+            "id": "65e97e62-72bb-41b3-948c-34c1de48e1a0",
+            "name": "Netflix Premium",
+            "description": "Watch unlimited movies, TV shows, and more on Netflix Premium. Stream on 4 devices simultaneously in Ultra HD.",
+            "category": "OTT",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+            "features": [
+              "4K Ultra HD",
+              "4 Screens",
+              "Download & Watch Offline",
+              "No Ads"
+            ],
+            "pricing": {
+              "1": 199,
+              "3": 549,
+              "6": 999,
+              "9": 1399,
+              "12": 1799
+            },
+            "salePrice": {
+              "1": 149,
+              "3": 449,
+              "6": 849,
+              "9": 1199,
+              "12": 1499
+            },
+            "saleEndDate": "2026-02-28T13:42:24.022Z",
+            "status": "active",
+            "createdAt": "2026-02-21T13:42:24.022Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/products?search=Netflix",
+        "method": "GET"
+      },
+      "get_single": {
+        "status": 200,
+        "data": {
+          "_id": "6999b64024e34cebd2903b57",
+          "id": "200f06bf-5f8e-4482-a3cb-d85f7537eaa1",
+          "name": "Amazon Prime",
+          "description": "Get free delivery, Prime Video, Prime Music, and exclusive deals with Amazon Prime.",
+          "category": "OTT",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Amazon_Prime_Logo.svg",
+          "features": [
+            "Free Delivery",
+            "Prime Video",
+            "Prime Music",
+            "Exclusive Deals"
+          ],
+          "pricing": {
+            "1": 0,
+            "3": 459,
+            "6": 899,
+            "9": 0,
+            "12": 1499
+          },
+          "salePrice": null,
+          "saleEndDate": null,
+          "status": "active",
+          "createdAt": "2026-02-21T13:42:24.023Z"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/products/200f06bf-5f8e-4482-a3cb-d85f7537eaa1",
+        "method": "GET"
+      },
+      "get_nonexistent": {
+        "status": 404,
+        "data": {
+          "error": "Product not found"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/products/nonexistent",
+        "method": "GET"
+      }
+    },
+    "orders": {
+      "create": {
+        "status": 200,
+        "data": {
+          "id": "53a2be6c-2fbc-4c15-bc1a-a575e032db32",
+          "userId": "63d69581-6a53-456f-ae4f-98e1f3331704",
+          "userEmail": "test_e4a4162d@example.com",
+          "userName": "John Doe",
+          "productId": "test-product-id",
+          "productName": "Netflix Premium",
+          "duration": 1,
+          "amount": 199,
+          "paymentMethod": "whatsapp",
+          "status": "pending",
+          "createdAt": "2026-02-21T13:46:16.048Z",
+          "_id": "6999b72824e34cebd2903b5b"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/orders",
+        "method": "POST"
+      },
+      "get_user_orders": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b72824e34cebd2903b5b",
+            "id": "53a2be6c-2fbc-4c15-bc1a-a575e032db32",
+            "userId": "63d69581-6a53-456f-ae4f-98e1f3331704",
+            "userEmail": "test_e4a4162d@example.com",
+            "userName": "John Doe",
+            "productId": "test-product-id",
+            "productName": "Netflix Premium",
+            "duration": 1,
+            "amount": 199,
+            "paymentMethod": "whatsapp",
+            "status": "pending",
+            "createdAt": "2026-02-21T13:46:16.048Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/orders",
+        "method": "GET"
+      },
+      "create_no_auth": {
+        "status": 401,
+        "data": {
+          "error": "Unauthorized"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/orders",
+        "method": "POST"
+      },
+      "get_no_auth": {
+        "status": 401,
+        "data": {
+          "error": "Unauthorized"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/orders",
+        "method": "GET"
+      }
+    },
+    "admin": {
+      "get_orders": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b72824e34cebd2903b5b",
+            "id": "53a2be6c-2fbc-4c15-bc1a-a575e032db32",
+            "userId": "63d69581-6a53-456f-ae4f-98e1f3331704",
+            "userEmail": "test_e4a4162d@example.com",
+            "userName": "John Doe",
+            "productId": "test-product-id",
+            "productName": "Netflix Premium",
+            "duration": 1,
+            "amount": 199,
+            "paymentMethod": "whatsapp",
+            "status": "pending",
+            "createdAt": "2026-02-21T13:46:16.048Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/orders",
+        "method": "GET"
+      },
+      "get_users": {
+        "status": 200,
+        "data": [
+          {
+            "_id": "6999b72624e34cebd2903b5a",
+            "id": "63d69581-6a53-456f-ae4f-98e1f3331704",
+            "name": "John Doe",
+            "email": "test_e4a4162d@example.com",
+            "role": "customer",
+            "createdAt": "2026-02-21T13:46:14.074Z",
+            "lastLogin": "2026-02-21T13:46:14.074Z"
+          },
+          {
+            "_id": "6999b64a24e34cebd2903b59",
+            "id": "9d1a8aac-2e3a-4089-af3c-ffa473b3801b",
+            "name": "Admin User",
+            "email": "parwal111@gmail.com",
+            "role": "admin",
+            "createdAt": "2026-02-21T13:42:34.285Z",
+            "lastLogin": "2026-02-21T13:46:14.789Z"
+          }
+        ],
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/users",
+        "method": "GET"
+      },
+      "get_stats": {
+        "status": 200,
+        "data": {
+          "totalProducts": 6,
+          "totalUsers": 2,
+          "totalOrders": 1,
+          "totalRevenue": 0
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/stats",
+        "method": "GET"
+      },
+      "create_product": {
+        "status": 200,
+        "data": {
+          "id": "44fd3030-a788-44df-a1e5-18d4f32a764a",
+          "name": "Test Product",
+          "description": "Test product description",
+          "category": "Software",
+          "image": "https://example.com/image.png",
+          "features": [
+            "Feature 1",
+            "Feature 2"
+          ],
+          "pricing": {
+            "1": 100,
+            "3": 250,
+            "6": 450,
+            "12": 800
+          },
+          "salePrice": null,
+          "saleEndDate": null,
+          "status": "active",
+          "createdAt": "2026-02-21T13:46:16.607Z",
+          "_id": "6999b72824e34cebd2903b5c"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/products",
+        "method": "POST"
+      },
+      "update_product": {
+        "status": 200,
+        "data": {
+          "_id": "6999b72824e34cebd2903b5c",
+          "id": "44fd3030-a788-44df-a1e5-18d4f32a764a",
+          "name": "Updated Test Product",
+          "description": "Test product description",
+          "category": "Software",
+          "image": "https://example.com/image.png",
+          "features": [
+            "Feature 1",
+            "Feature 2"
+          ],
+          "pricing": {
+            "1": 100,
+            "3": 250,
+            "6": 450,
+            "12": 800
+          },
+          "salePrice": null,
+          "saleEndDate": null,
+          "status": "out_of_stock",
+          "createdAt": "2026-02-21T13:46:16.607Z",
+          "updatedAt": "2026-02-21T13:46:16.675Z"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/products/44fd3030-a788-44df-a1e5-18d4f32a764a",
+        "method": "PUT"
+      },
+      "delete_product": {
+        "status": 200,
+        "data": {
+          "message": "Product deleted"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/products/44fd3030-a788-44df-a1e5-18d4f32a764a",
+        "method": "DELETE"
+      },
+      "orders_no_auth": {
+        "status": 401,
+        "data": {
+          "error": "Unauthorized"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/orders",
+        "method": "GET"
+      },
+      "customer_access_admin": {
+        "status": 401,
+        "data": {
+          "error": "Unauthorized"
+        },
+        "success": true,
+        "url": "https://stream-suite-3.preview.emergentagent.com/api/admin/users",
+        "method": "GET"
+      }
+    },
+    "errors": []
+  }
+}
