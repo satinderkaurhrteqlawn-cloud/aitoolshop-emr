@@ -497,7 +497,7 @@ function ProductsPage({ products, setSelectedProduct, setCurrentPage, searchTerm
                 setCurrentPage('product');
               }}
             />
-          )}
+          ))}
         </div>
       )}
     </div>
