@@ -62,10 +62,33 @@ const api = async (endpoint, options = {}) => {
     ...options.headers,
   };
 
-  const res = await fetch(`/api/${endpoint}`, { ...options, headers });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Something went wrong');
-  return data;
+  try {
+    const res = await fetch(`/api/${endpoint}`, { ...options, headers });
+    
+    // Check if response has content
+    const text = await res.text();
+    if (!text) {
+      if (!res.ok) throw new Error('Request failed');
+      return {};
+    }
+    
+    // Parse JSON
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError, 'Response:', text);
+      throw new Error('Invalid server response');
+    }
+    
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    return data;
+  } catch (error) {
+    if (error.name === 'TypeError' && error.message.includes('fetch')) {
+      throw new Error('Network error. Please check your connection.');
+    }
+    throw error;
+  }
 };
 
 // Countdown Timer Component
